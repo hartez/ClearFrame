@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ClearFrame</string>
+    <string name="loading">Loading…</string>
+    <string name="loading_failed">Failed to load</string>
+    <string name="retry">Retry</string>
+    <string name="photo">Photo</string>
+    <string name="empty">No Photos to Display</string>
+</resources>

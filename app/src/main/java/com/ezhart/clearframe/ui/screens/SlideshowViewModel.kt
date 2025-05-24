@@ -8,11 +8,17 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ezhart.clearframe.MainActivity
 import com.ezhart.clearframe.model.Photo
+import com.ezhart.clearframe.ui.screens.SlideDirection.Forward
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
+
+sealed interface SlideDirection {
+    data object Forward : SlideDirection
+    data object Backward : SlideDirection
+}
 
 class SlideshowViewModel(val photos: List<Photo>) : ViewModel() {
     private var currentIndex: Int = 0
@@ -24,6 +30,8 @@ class SlideshowViewModel(val photos: List<Photo>) : ViewModel() {
     var autoAdvanceJob: Job? = null
 
     var currentPhoto: String by mutableStateOf(photos[currentIndex].filename)
+    var previousPhoto: String by mutableStateOf(currentPhoto)
+    var direction: SlideDirection by mutableStateOf(Forward)
 
     init {
         EventBus.getDefault().register(this)
@@ -42,14 +50,14 @@ class SlideshowViewModel(val photos: List<Photo>) : ViewModel() {
         }
     }
 
-    private fun handleManualAdvance(advance:() -> Unit) {
-        if(autoAdvance){
+    private fun handleManualAdvance(advance: () -> Unit) {
+        if (autoAdvance) {
             autoAdvanceJob?.cancel()
         }
 
         advance()
 
-        if(autoAdvance){
+        if (autoAdvance) {
             play()
         }
     }
@@ -59,7 +67,9 @@ class SlideshowViewModel(val photos: List<Photo>) : ViewModel() {
         if (currentIndex >= photos.size) {
             currentIndex = 0
         }
+        previousPhoto = currentPhoto
         currentPhoto = photos[currentIndex].filename
+        direction = SlideDirection.Forward
     }
 
     fun prev() {
@@ -67,7 +77,9 @@ class SlideshowViewModel(val photos: List<Photo>) : ViewModel() {
         if (currentIndex < 0) {
             currentIndex = photos.size - 1
         }
+        previousPhoto = currentPhoto
         currentPhoto = photos[currentIndex].filename
+        direction = SlideDirection.Backward
     }
 
     private fun play() {
@@ -90,6 +102,7 @@ class SlideshowViewModel(val photos: List<Photo>) : ViewModel() {
         autoAdvance -> {
             pause()
         }
+
         else -> {
             play()
         }

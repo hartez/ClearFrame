@@ -1,5 +1,11 @@
 package com.ezhart.clearframe.ui.screens
 
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.AnimatedContentTransitionScope
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -22,7 +28,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import coil.transition.CrossfadeTransition
 import com.ezhart.clearframe.R
 import com.ezhart.clearframe.ui.theme.ClearFrameTheme
 
@@ -90,18 +95,58 @@ fun SlideScreen(
             .background(colorResource(R.color.black))
             .fillMaxSize(), contentAlignment = Alignment.Center
     ) {
-        AsyncImage(
-            model = ImageRequest.Builder(context = LocalContext.current)
-                .data(uiState.slideShowViewModel.currentPhoto)
-                .transitionFactory { target, result -> CrossfadeTransition(target, result) }
-                .build(),
-            error = painterResource(R.drawable.broken_image),
-            contentDescription = stringResource(R.string.photo),
-            contentScale = ContentScale.Fit,
-            modifier = Modifier.fillMaxWidth()
-        )
+
+        AnimatedContent(
+            targetState = uiState.slideShowViewModel.currentPhoto,
+            label = "animated content",
+            transitionSpec = {
+
+                val slideDirection = when (uiState.slideShowViewModel.direction) {
+                    SlideDirection.Forward -> AnimatedContentTransitionScope.SlideDirection.Left
+                    SlideDirection.Backward -> AnimatedContentTransitionScope.SlideDirection.Right
+                }
+
+                val slideDuration = 1500
+                val fadeDuration = 1000
+
+                slideIntoContainer(
+                    towards = slideDirection,
+                    animationSpec = tween(slideDuration)
+                ) + fadeIn(animationSpec = tween(fadeDuration)) togetherWith
+                        slideOutOfContainer(
+                            towards = slideDirection,
+                            animationSpec = tween(slideDuration)
+                        ) + fadeOut(animationSpec = tween(fadeDuration))
+
+            }
+        ) { filename ->
+            if (filename == uiState.slideShowViewModel.currentPhoto) {
+                AsyncImage(
+                    model = ImageRequest.Builder(context = LocalContext.current)
+                        .data(uiState.slideShowViewModel.currentPhoto)
+                        .build(),
+                    error = painterResource(R.drawable.broken_image),
+                    contentDescription = stringResource(R.string.photo),
+                    contentScale = ContentScale.Fit,
+                    modifier = Modifier.fillMaxWidth()
+                )
+            } else {
+                AsyncImage(
+                    model = ImageRequest.Builder(context = LocalContext.current)
+                        .data(uiState.slideShowViewModel.previousPhoto)
+                        .build(),
+                    placeholder = painterResource(R.drawable.loading),
+                    error = painterResource(R.drawable.broken_image),
+                    contentDescription = stringResource(R.string.photo),
+                    contentScale = ContentScale.Fit,
+                    modifier = Modifier.fillMaxWidth()
+                )
+            }
+        }
     }
+
 }
+
 
 @Preview(showBackground = true)
 @Composable

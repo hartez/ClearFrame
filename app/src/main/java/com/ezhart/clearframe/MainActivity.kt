@@ -46,7 +46,7 @@ class MainActivity : ComponentActivity() {
     var isAwake = false
 
     // Hard coded for now, might make this a setting later
-    val sleepTimeoutSeconds = 10 * 60
+    val sleepTimeoutSeconds = 15 * 60
 
     // Hard coded for now, might make this settable later
     val sleepCheckInterval: Long = 1000 * 60

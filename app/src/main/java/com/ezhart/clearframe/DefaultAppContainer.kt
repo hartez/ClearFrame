@@ -1,6 +1,9 @@
 package com.ezhart.clearframe
 
 import android.content.Context
+import coil.ImageLoader
+import coil.disk.DiskCache
+import coil.memory.MemoryCache
 import com.ezhart.clearframe.data.InternalStoragePhotoRepository
 import com.ezhart.clearframe.data.PhotoRepository
 

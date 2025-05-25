@@ -19,6 +19,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
+import coil.ImageLoader
 import com.ezhart.clearframe.sync.SyncService
 import com.ezhart.clearframe.ui.screens.AppViewModel
 import com.ezhart.clearframe.ui.screens.HomeScreen
@@ -69,9 +70,15 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+
+
     @OptIn(DelicateCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
+
+
 
         enableEdgeToEdge()
 

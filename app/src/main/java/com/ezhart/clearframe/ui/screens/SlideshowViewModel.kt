@@ -31,6 +31,7 @@ class SlideshowViewModel(val photos: List<Photo>) : ViewModel() {
 
     var currentPhoto: String by mutableStateOf(photos[currentIndex].filename)
     var previousPhoto: String by mutableStateOf(currentPhoto)
+    var nextPhoto: String by mutableStateOf(currentPhoto)
     var direction: SlideDirection by mutableStateOf(Forward)
 
     init {
@@ -67,8 +68,15 @@ class SlideshowViewModel(val photos: List<Photo>) : ViewModel() {
         if (currentIndex >= photos.size) {
             currentIndex = 0
         }
+
+        var nextIndex = currentIndex + 1
+        if (nextIndex >= photos.size) {
+            nextIndex = 0
+        }
+
         previousPhoto = currentPhoto
         currentPhoto = photos[currentIndex].filename
+        nextPhoto = photos[nextIndex].filename
         direction = SlideDirection.Forward
     }
 
@@ -77,8 +85,15 @@ class SlideshowViewModel(val photos: List<Photo>) : ViewModel() {
         if (currentIndex < 0) {
             currentIndex = photos.size - 1
         }
+
+        var nextIndex = currentIndex - 1
+        if (nextIndex < 0) {
+            nextIndex = photos.size - 1
+        }
+
         previousPhoto = currentPhoto
         currentPhoto = photos[currentIndex].filename
+        nextPhoto = photos[nextIndex].filename
         direction = SlideDirection.Backward
     }
 

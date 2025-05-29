@@ -7,3 +7,4 @@ The application syncs and displays photos from a server hosted on my home Synolo
 More info can be found in my write-ups about all the parts of the project:
 
 [Part 1](https://ezhart.com/posts/hacking-our-digital-frame-part-1)
+[Part 2](https://ezhart.com/posts/hacking-our-digital-frame-part-2)

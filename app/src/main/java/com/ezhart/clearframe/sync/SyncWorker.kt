@@ -21,8 +21,10 @@ import java.io.InputStream
 
 private const val TAG = "SyncService"
 
+// Getting the simulator configured to hit my DNS server and resolve "http://frame" correctly
+// was a pain, so I just used the static IP instead. That also works on the hardware frame, so
+// I'm leaving it configured that way.
 private const val BASE_URL = "http://192.168.1.16:5556"
-//private const val BASE_URL = "http://frame"
 
 interface RemotePhotoService {
     @GET("/")
@@ -213,14 +215,14 @@ class SyncWorker(appContext: Context, workerParams: WorkerParameters) :
 
             // Initially tried to use Path() for building this path, but got a missing library error
             // so I just punted and used a template
-            //val path = Path(applicationContext.filesDir.path, filename).toString()
+            // val path = Path(applicationContext.filesDir.path, filename).toString()
             val path = "${applicationContext.filesDir.path}/$filename"
 
             Log.d(TAG, "Destination is $path")
 
             val fos = FileOutputStream(path)
             fos.use { output ->
-                val buffer = ByteArray(4 * 1024) // or other buffer size
+                val buffer = ByteArray(4 * 1024)
                 var read: Int
                 while (input.read(buffer).also { read = it } != -1) {
                     output.write(buffer, 0, read)

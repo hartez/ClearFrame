@@ -30,7 +30,7 @@ sealed interface AppUiState {
     data class Running(val slideShowViewModel: SlideshowViewModel) : AppUiState
 }
 
-public class AppViewModel(private val photoRepository: PhotoRepository) : ViewModel() {
+class AppViewModel(private val photoRepository: PhotoRepository) : ViewModel() {
     var uiState: AppUiState by mutableStateOf(AppUiState.Loading)
     private var slideshowViewModel: SlideshowViewModel? = null
 

@@ -9,11 +9,6 @@ private const val TAG = "MotionSensor"
 data object MotionDetectedEvent
 
 class MotionSensor {
-
-    var noActivityCounter: Long = 0
-
-    var isAlreadyInSleepMode: Boolean = false
-
     external fun readMotionSensor(): Int
 
     external fun readMotionSensorPower(): Boolean
@@ -28,7 +23,6 @@ class MotionSensor {
         if (!sensorEnabled) {
             Log.d(TAG, "Enabling sensor")
             sensorEnabled = true
-           // setWakeOnMotion(true)
         }
 
         isWatchingForMotion = true
@@ -41,10 +35,6 @@ class MotionSensor {
 
             delay(1000)
         }
-    }
-
-    fun stop(){
-        isWatchingForMotion = false
     }
 
     @get:Synchronized

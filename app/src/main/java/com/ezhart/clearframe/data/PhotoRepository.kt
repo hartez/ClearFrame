@@ -5,7 +5,6 @@ import android.util.Log
 import com.ezhart.clearframe.model.Photo
 import java.io.File
 import java.security.MessageDigest
-import kotlin.io.path.Path
 
 private const val TAG = "PhotoRepository"
 

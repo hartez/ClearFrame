@@ -6,8 +6,11 @@ The application syncs and displays photos from a server hosted on my home Synolo
 
 More info can be found in my write-ups about all the parts of the project:
 
-[Part 1](https://ezhart.com/posts/hacking-our-digital-frame-part-1)
+[Part 1](https://ezhart.com/posts/hacking-our-digital-frame-part-1) - Opening the frame
 
-[Part 2](https://ezhart.com/posts/hacking-our-digital-frame-part-2)
+[Part 2](https://ezhart.com/posts/hacking-our-digital-frame-part-2) - Setting the frame up for remote development
 
-[Part 3](https://ezhart.com/posts/hacking-our-digital-frame-part-3)
+[Part 3](https://ezhart.com/posts/hacking-our-digital-frame-part-3) - Building a photo server
+
+[Part 4](https://ezhart.com/posts/hacking-our-digital-frame-part-4) - This app (ClearFrame)
+

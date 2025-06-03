@@ -1,6 +1,6 @@
 # ClearFrame
 
-ClearFrame is a custom photo slideshow application designed to run on my NixPlay W13D digital frame. I wrote it to replace the original software on the frame when NixPlay started charging subscription prices to load photos via the cloud. 
+ClearFrame is a custom photo slideshow application designed to run on my NixPlay W13D digital frame. I wrote it to replace the original software on the frame when Nixplay started charging subscription prices to load photos via the cloud. 
 
 The application syncs and displays photos from a server hosted on my home Synology - I named it "ClearFrame" because it's not cloudy.
 

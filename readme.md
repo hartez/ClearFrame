@@ -14,3 +14,7 @@ More info can be found in my write-ups about all the parts of the project:
 
 [Part 4](https://ezhart.com/posts/hacking-our-digital-frame-part-4) - This app (ClearFrame)
 
+[Part 5](https://ezhart.com/posts/hacking-our-digital-frame-part-5) - Working with the remote control
+
+[Part 6](https://ezhart.com/posts/hacking-our-digital-frame-part-6) - Working with the motion sensor
+

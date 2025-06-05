@@ -6,15 +6,15 @@ The application syncs and displays photos from a server hosted on my home Synolo
 
 More info can be found in my write-ups about all the parts of the project:
 
-[Part 1](https://ezhart.com/posts/digital-frame-hacking-part-1) - Opening the frame
+[Part 1](https://ezhart.com/posts/digital-frame-hacking-1) - Opening the frame
 
-[Part 2](https://ezhart.com/posts/digital-frame-hacking-part-2) - Setting the frame up for remote development
+[Part 2](https://ezhart.com/posts/digital-frame-hacking-2) - Setting the frame up for remote development
 
-[Part 3](https://ezhart.com/posts/digital-frame-hacking-part-3) - Building a photo server
+[Part 3](https://ezhart.com/posts/digital-frame-hacking-3) - Building a photo server
 
-[Part 4](https://ezhart.com/posts/digital-frame-hacking-part-4) - This app (ClearFrame)
+[Part 4](https://ezhart.com/posts/digital-frame-hacking-4) - This app (ClearFrame)
 
-[Part 5](https://ezhart.com/posts/digital-frame-hacking-part-5) - Working with the remote control
+[Part 5](https://ezhart.com/posts/digital-frame-hacking-5) - Working with the remote control
 
-[Part 6](https://ezhart.com/posts/digital-frame-hacking-part-6) - Working with the motion sensor
+[Part 6](https://ezhart.com/posts/digital-frame-hacking-6) - Working with the motion sensor
 
